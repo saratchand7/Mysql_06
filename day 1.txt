@@ -221,7 +221,7 @@ what are the differences between File Management System(FMS) and Database Manage
    provides backup and recovery features
 8. Data inconsistency may cause anomalies.
    maintains data consistency and integrity.
-9. suitable for small applications
+9. suitable for small applications.
     suitable for small, medium and large applications.
 
 Q: What is the difference between a File System and a DBMS?(IQ)
