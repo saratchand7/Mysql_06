@@ -1,5 +1,5 @@
 
-MY SQL (pass - Codegana2026) (Day 1:- https://tinyurl.com/MySQLPFSDA-05Notes)
+MY SQL 
 ====================
 
 what is data ?
