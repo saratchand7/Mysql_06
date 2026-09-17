@@ -1,0 +1,844 @@
+
+Numeric fuctions:-
+=================
+
+abs() :- absolute value of a number.
+ceil() :- round up
+floor() :- round down
+round() :- round to a specific number of digits
+mod() :- modulo of a number.
+pow()/power() :- exponentiation.
+sqrt :- square root
+EXP() :- Exponential function.
+RADIANS() :- convert degrees to radians.
+DEGREES() :- convert radians to degrees.
+SIGN() :- Returns the sing of a number.
+RAND() :- Generate a random number.
+GREATEST() :- Find the maximum value.
+LEAST ():- find the minimum value.
+PI() :- Return the value of P
+HEX() :- Convert to hexadecimal.
+OCT() :- Convert to octal
+BIN() :- COnvert to binary.
+
+
+
+mysql> SELECT ABS(-100) AS ABSOLUTE_VALUE;
++----------------+
+| ABSOLUTE_VALUE |
++----------------+
+|            100 |
++----------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT CEIL(12.34) AS ROUNDED_UP;
++------------+
+| ROUNDED_UP |
++------------+
+|         13 |
++------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT FLOOR(12.34) AS ROUNDED_DOWN;
++--------------+
+| ROUNDED_DOWN |
++--------------+
+|           12 |
++--------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT ROUND(12.3456,2) AS ROUNDED_VALUE;
++---------------+
+| ROUNDED_VALUE |
++---------------+
+|         12.35 |
++---------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT MOD(17,5) AS REMINDER_VALUE;
++----------------+
+| REMINDER_VALUE |
++----------------+
+|              2 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT POW(2,3) AS POWER_VALUE;
++-------------+
+| POWER_VALUE |
++-------------+
+|           8 |
++-------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT SQRT(16) AS SQUARE_ROOT_VALUE;
++-------------------+
+| SQUARE_ROOT_VALUE |
++-------------------+
+|                 4 |
++-------------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT LN(10) AS NATURAL_LOG;
++-------------------+
+| NATURAL_LOG       |
++-------------------+
+| 2.302585092994046 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT LOG(10,100) AS LOG_VALUE;
++-----------+
+| LOG_VALUE |
++-----------+
+|         2 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT PI() AS PI_VALUE;
++----------+
+| PI_VALUE |
++----------+
+| 3.141593 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT RADIANS(180) AS RADIANS_VALUE;
++-------------------+
+| RADIANS_VALUE     |
++-------------------+
+| 3.141592653589793 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DEGREES(PI()) AS DEGREES_VALUE;
++---------------+
+| DEGREES_VALUE |
++---------------+
+|           180 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SIGN(-125) AS SIGN_VALUE;
++------------+
+| SIGN_VALUE |
++------------+
+|         -1 |
++------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT SIGN(125) AS SIGN_VALUE;
++------------+
+| SIGN_VALUE |
++------------+
+|          1 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SIGN(0) AS SIGN_VALUE;
++------------+
+| SIGN_VALUE |
++------------+
+|          0 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT RAND() AS RANDOM_VALUE;
++--------------------+
+| RANDOM_VALUE       |
++--------------------+
+| 0.6167735630802564 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT GREATEST(10,-20,35,70) AS GREATEST_VALUE;
++----------------+
+| GREATEST_VALUE |
++----------------+
+|             70 |
++----------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT LEAST(10,-20,35,70) AS LEASR_VALUE;
++-------------+
+| LEASR_VALUE |
++-------------+
+|         -20 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT BIT_COUNT(10) AS BIT_COUNT;
++-----------+
+| BIT_COUNT |
++-----------+
+|         2 |
++-----------+
+1 row in set (0.02 sec)
+
+mysql> SELECT BIT_COUNT(7) AS BIT_COUNT;
++-----------+
+| BIT_COUNT |
++-----------+
+|         3 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT OCT(64) AS OCTAL_VALUE;
++-------------+
+| OCTAL_VALUE |
++-------------+
+| 100         |
++-------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT HEX(255) AS HEX_VALUE;
++-----------+
+| HEX_VALUE |
++-----------+
+| FF        |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> CREATE TABLE employees (
+    ->  emp_id INT PRIMARY KEY,
+    ->  first_name VARCHAR(30),
+    ->  last_name VARCHAR(30),
+    ->  email VARCHAR(60),
+    ->  phone_number VARCHAR(20),
+    ->  department VARCHAR(30),
+    ->  city VARCHAR(30),
+    ->  salary DECIMAL(10,2)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql>
+mysql>
+mysql> INSERT INTO employees VALUES
+    -> (101,'Rahul','Kumar','rahul.kumar@gmail.com','987-654-3210','IT','Hyderabad',45000),
+    -> (102,'Anita','Sharma','anita.sharma@yahoo.com','912-345-6789','HR','Bangalore',38000),
+    -> (103,'Suresh','Verma','suresh.verma@gmail.com','998-123-4567','Sales','Chennai',52000),
+    -> (104,'Priya','Singh','priya.singh@outlook.com','900-456-7890','Finance','Pune',47000),
+    -> (105,'Rahul','Joshi','rahul.joshi@gmail.com','955-888-1111','Testing','Delhi',41000),
+    -> (106,'Kiran','Reddy','kiran.reddy@gmail.com','901-222-3333','IT','Hyderabad',56000),
+    -> (107,'Deepika','Naidu','deepika.naidu@yahoo.com','944-111-2222','HR','Vizag',39000),
+    -> (108,'Mahesh','Patel','mahesh.patel@gmail.com','933-444-5555','Sales','Mumbai',62000),
+    -> (109,'Divya','Gupta','divya.gupta@gmail.com','955-777-8888','Finance','Delhi',49000),
+    -> (110,'Arjun','Rao','arjun.rao@gmail.com','988-999-7777','Developer','Hyderabad',68000);
+Query OK, 10 rows affected (0.03 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> SELECT*FROM EMPLOYEES;
++--------+------------+-----------+-------------------------+--------------+------------+-----------+----------+
+| emp_id | first_name | last_name | email                   | phone_number | department | city      | salary   |
++--------+------------+-----------+-------------------------+--------------+------------+-----------+----------+
+|    101 | Rahul      | Kumar     | rahul.kumar@gmail.com   | 987-654-3210 | IT         | Hyderabad | 45000.00 |
+|    102 | Anita      | Sharma    | anita.sharma@yahoo.com  | 912-345-6789 | HR         | Bangalore | 38000.00 |
+|    103 | Suresh     | Verma     | suresh.verma@gmail.com  | 998-123-4567 | Sales      | Chennai   | 52000.00 |
+|    104 | Priya      | Singh     | priya.singh@outlook.com | 900-456-7890 | Finance    | Pune      | 47000.00 |
+|    105 | Rahul      | Joshi     | rahul.joshi@gmail.com   | 955-888-1111 | Testing    | Delhi     | 41000.00 |
+|    106 | Kiran      | Reddy     | kiran.reddy@gmail.com   | 901-222-3333 | IT         | Hyderabad | 56000.00 |
+|    107 | Deepika    | Naidu     | deepika.naidu@yahoo.com | 944-111-2222 | HR         | Vizag     | 39000.00 |
+|    108 | Mahesh     | Patel     | mahesh.patel@gmail.com  | 933-444-5555 | Sales      | Mumbai    | 62000.00 |
+|    109 | Divya      | Gupta     | divya.gupta@gmail.com   | 955-777-8888 | Finance    | Delhi     | 49000.00 |
+|    110 | Arjun      | Rao       | arjun.rao@gmail.com     | 988-999-7777 | Developer  | Hyderabad | 68000.00 |
++--------+------------+-----------+-------------------------+--------------+------------+-----------+----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT CONCAT(FIRST_NAME,'',LAST_NAME)AS FULL_NAME FROM EMPLOYEES;
++--------------+
+| FULL_NAME    |
++--------------+
+| RahulKumar   |
+| AnitaSharma  |
+| SureshVerma  |
+| PriyaSingh   |
+| RahulJoshi   |
+| KiranReddy   |
+| DeepikaNaidu |
+| MaheshPatel  |
+| DivyaGupta   |
+| ArjunRao     |
++--------------+
+10 rows in set (0.02 sec)
+
+mysql> SELECT CONCAT(FIRST_NAME,' ',LAST_NAME)AS FULL_NAME FROM EMPLOYEES;
++---------------+
+| FULL_NAME     |
++---------------+
+| Rahul Kumar   |
+| Anita Sharma  |
+| Suresh Verma  |
+| Priya Singh   |
+| Rahul Joshi   |
+| Kiran Reddy   |
+| Deepika Naidu |
+| Mahesh Patel  |
+| Divya Gupta   |
+| Arjun Rao     |
++---------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT FIRST_NAME,UPPER(FIRST_NAME) AS UPPER_NAME FROM EMPLOYEES;
++------------+------------+
+| FIRST_NAME | UPPER_NAME |
++------------+------------+
+| Rahul      | RAHUL      |
+| Anita      | ANITA      |
+| Suresh     | SURESH     |
+| Priya      | PRIYA      |
+| Rahul      | RAHUL      |
+| Kiran      | KIRAN      |
+| Deepika    | DEEPIKA    |
+| Mahesh     | MAHESH     |
+| Divya      | DIVYA      |
+| Arjun      | ARJUN      |
++------------+------------+
+10 rows in set (0.02 sec)
+
+mysql> SELECT LAST_NAME,LOWER(LAST_NAME) AS LOWER_NAME FROM EMPLOYEES;
++-----------+------------+
+| LAST_NAME | LOWER_NAME |
++-----------+------------+
+| Kumar     | kumar      |
+| Sharma    | sharma     |
+| Verma     | verma      |
+| Singh     | singh      |
+| Joshi     | joshi      |
+| Reddy     | reddy      |
+| Naidu     | naidu      |
+| Patel     | patel      |
+| Gupta     | gupta      |
+| Rao       | rao        |
++-----------+------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT EMAIL,SUBSTRING(EMAIL,1,10) AS EMAIL_PREFIX FROM EMPLOYEES;
++-------------------------+--------------+
+| EMAIL                   | EMAIL_PREFIX |
++-------------------------+--------------+
+| rahul.kumar@gmail.com   | rahul.kuma   |
+| anita.sharma@yahoo.com  | anita.shar   |
+| suresh.verma@gmail.com  | suresh.ver   |
+| priya.singh@outlook.com | priya.sing   |
+| rahul.joshi@gmail.com   | rahul.josh   |
+| kiran.reddy@gmail.com   | kiran.redd   |
+| deepika.naidu@yahoo.com | deepika.na   |
+| mahesh.patel@gmail.com  | mahesh.pat   |
+| divya.gupta@gmail.com   | divya.gupt   |
+| arjun.rao@gmail.com     | arjun.rao@   |
++-------------------------+--------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT FIRST_NAME, LENGTH(FIRST_NAME) AS FIRST_NAME_LENGHT FROM EMPLOYEES;
++------------+-------------------+
+| FIRST_NAME | FIRST_NAME_LENGHT |
++------------+-------------------+
+| Rahul      |                 5 |
+| Anita      |                 5 |
+| Suresh     |                 6 |
+| Priya      |                 5 |
+| Rahul      |                 5 |
+| Kiran      |                 5 |
+| Deepika    |                 7 |
+| Mahesh     |                 6 |
+| Divya      |                 5 |
+| Arjun      |                 5 |
++------------+-------------------+
+10 rows in set (0.02 sec)
+
+mysql> SELECT*FROM EMPLOYEES;
++--------+------------+-----------+-------------------------+--------------+------------+-----------+----------+
+| emp_id | first_name | last_name | email                   | phone_number | department | city      | salary   |
++--------+------------+-----------+-------------------------+--------------+------------+-----------+----------+
+|    101 | Rahul      | Kumar     | rahul.kumar@gmail.com   | 987-654-3210 | IT         | Hyderabad | 45000.00 |
+|    102 | Anita      | Sharma    | anita.sharma@yahoo.com  | 912-345-6789 | HR         | Bangalore | 38000.00 |
+|    103 | Suresh     | Verma     | suresh.verma@gmail.com  | 998-123-4567 | Sales      | Chennai   | 52000.00 |
+|    104 | Priya      | Singh     | priya.singh@outlook.com | 900-456-7890 | Finance    | Pune      | 47000.00 |
+|    105 | Rahul      | Joshi     | rahul.joshi@gmail.com   | 955-888-1111 | Testing    | Delhi     | 41000.00 |
+|    106 | Kiran      | Reddy     | kiran.reddy@gmail.com   | 901-222-3333 | IT         | Hyderabad | 56000.00 |
+|    107 | Deepika    | Naidu     | deepika.naidu@yahoo.com | 944-111-2222 | HR         | Vizag     | 39000.00 |
+|    108 | Mahesh     | Patel     | mahesh.patel@gmail.com  | 933-444-5555 | Sales      | Mumbai    | 62000.00 |
+|    109 | Divya      | Gupta     | divya.gupta@gmail.com   | 955-777-8888 | Finance    | Delhi     | 49000.00 |
+|    110 | Arjun      | Rao       | arjun.rao@gmail.com     | 988-999-7777 | Developer  | Hyderabad | 68000.00 |
++--------+------------+-----------+-------------------------+--------------+------------+-----------+----------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT PHONE_NUMBER,REPLACE(PHONE_NUMBER,'-','')AS CLEAN_PHONE FROM EMPLOYEES;
++--------------+-------------+
+| PHONE_NUMBER | CLEAN_PHONE |
++--------------+-------------+
+| 987-654-3210 | 9876543210  |
+| 912-345-6789 | 9123456789  |
+| 998-123-4567 | 9981234567  |
+| 900-456-7890 | 9004567890  |
+| 955-888-1111 | 9558881111  |
+| 901-222-3333 | 9012223333  |
+| 944-111-2222 | 9441112222  |
+| 933-444-5555 | 9334445555  |
+| 955-777-8888 | 9557778888  |
+| 988-999-7777 | 9889997777  |
++--------------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEES(EMP_ID,FIRST_NAME) VALUES(111,' ARUN KUMAR ');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> SELECT*FROM EMPLOYEES;
++--------+--------------+-----------+-------------------------+--------------+------------+-----------+----------+
+| emp_id | first_name   | last_name | email                   | phone_number | department | city      | salary   |
++--------+--------------+-----------+-------------------------+--------------+------------+-----------+----------+
+|    101 | Rahul        | Kumar     | rahul.kumar@gmail.com   | 987-654-3210 | IT         | Hyderabad | 45000.00 |
+|    102 | Anita        | Sharma    | anita.sharma@yahoo.com  | 912-345-6789 | HR         | Bangalore | 38000.00 |
+|    103 | Suresh       | Verma     | suresh.verma@gmail.com  | 998-123-4567 | Sales      | Chennai   | 52000.00 |
+|    104 | Priya        | Singh     | priya.singh@outlook.com | 900-456-7890 | Finance    | Pune      | 47000.00 |
+|    105 | Rahul        | Joshi     | rahul.joshi@gmail.com   | 955-888-1111 | Testing    | Delhi     | 41000.00 |
+|    106 | Kiran        | Reddy     | kiran.reddy@gmail.com   | 901-222-3333 | IT         | Hyderabad | 56000.00 |
+|    107 | Deepika      | Naidu     | deepika.naidu@yahoo.com | 944-111-2222 | HR         | Vizag     | 39000.00 |
+|    108 | Mahesh       | Patel     | mahesh.patel@gmail.com  | 933-444-5555 | Sales      | Mumbai    | 62000.00 |
+|    109 | Divya        | Gupta     | divya.gupta@gmail.com   | 955-777-8888 | Finance    | Delhi     | 49000.00 |
+|    110 | Arjun        | Rao       | arjun.rao@gmail.com     | 988-999-7777 | Developer  | Hyderabad | 68000.00 |
+|    111 |  ARUN KUMAR  | NULL      | NULL                    | NULL         | NULL       | NULL      |     NULL |
++--------+--------------+-----------+-------------------------+--------------+------------+-----------+----------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT FIRST_NAME,TRIM(FIRST_NAME)AS TRIMMED_NAME FROM EMPLOYEES;
++--------------+--------------+
+| FIRST_NAME   | TRIMMED_NAME |
++--------------+--------------+
+| Rahul        | Rahul        |
+| Anita        | Anita        |
+| Suresh       | Suresh       |
+| Priya        | Priya        |
+| Rahul        | Rahul        |
+| Kiran        | Kiran        |
+| Deepika      | Deepika      |
+| Mahesh       | Mahesh       |
+| Divya        | Divya        |
+| Arjun        | Arjun        |
+|  ARUN KUMAR  | ARUN KUMAR   |
++--------------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT CONCAT_WS(',',FIRST_NAME,LAST_NAME,EMAIL)AS EMPLOYEE_INFO FROM EMPLOYEES;
++---------------------------------------+
+| EMPLOYEE_INFO                         |
++---------------------------------------+
+| Rahul,Kumar,rahul.kumar@gmail.com     |
+| Anita,Sharma,anita.sharma@yahoo.com   |
+| Suresh,Verma,suresh.verma@gmail.com   |
+| Priya,Singh,priya.singh@outlook.com   |
+| Rahul,Joshi,rahul.joshi@gmail.com     |
+| Kiran,Reddy,kiran.reddy@gmail.com     |
+| Deepika,Naidu,deepika.naidu@yahoo.com |
+| Mahesh,Patel,mahesh.patel@gmail.com   |
+| Divya,Gupta,divya.gupta@gmail.com     |
+| Arjun,Rao,arjun.rao@gmail.com         |
+|  ARUN KUMAR                           |
++---------------------------------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT FIRST_NAME,POSITION('A'IN FIRST_NAME) AS POSITION_OF_A FROM EMPLOYEES;
++--------------+---------------+
+| FIRST_NAME   | POSITION_OF_A |
++--------------+---------------+
+| Rahul        |             2 |
+| Anita        |             1 |
+| Suresh       |             0 |
+| Priya        |             5 |
+| Rahul        |             2 |
+| Kiran        |             4 |
+| Deepika      |             7 |
+| Mahesh       |             2 |
+| Divya        |             5 |
+| Arjun        |             1 |
+|  ARUN KUMAR  |             2 |
++--------------+---------------+
+11 rows in set (0.02 sec)
+
+mysql> SELECT FIRST_NAME,LEFT(FIRST_NAME,3)AS SHORT_NAME FROM EMPLOYEES;
++--------------+------------+
+| FIRST_NAME   | SHORT_NAME |
++--------------+------------+
+| Rahul        | Rah        |
+| Anita        | Ani        |
+| Suresh       | Sur        |
+| Priya        | Pri        |
+| Rahul        | Rah        |
+| Kiran        | Kir        |
+| Deepika      | Dee        |
+| Mahesh       | Mah        |
+| Divya        | Div        |
+| Arjun        | Arj        |
+|  ARUN KUMAR  |  AR        |
++--------------+------------+
+11 rows in set (0.02 sec)
+
+mysql> SELECT FIRST_NAME,RIGHT(FIRST_NAME,3)AS ENDED_NAME FROM EMPLOYEES;
++--------------+------------+
+| FIRST_NAME   | ENDED_NAME |
++--------------+------------+
+| Rahul        | hul        |
+| Anita        | ita        |
+| Suresh       | esh        |
+| Priya        | iya        |
+| Rahul        | hul        |
+| Kiran        | ran        |
+| Deepika      | ika        |
+| Mahesh       | esh        |
+| Divya        | vya        |
+| Arjun        | jun        |
+|  ARUN KUMAR  | AR         |
++--------------+------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT LAST_NAME,REVERSE(LAST_NAME) AS REVERSED_NAME FROM EMPLOYEES;
++-----------+---------------+
+| LAST_NAME | REVERSED_NAME |
++-----------+---------------+
+| Kumar     | ramuK         |
+| Sharma    | amrahS        |
+| Verma     | amreV         |
+| Singh     | hgniS         |
+| Joshi     | ihsoJ         |
+| Reddy     | yddeR         |
+| Naidu     | udiaN         |
+| Patel     | letaP         |
+| Gupta     | atpuG         |
+| Rao       | oaR           |
+| NULL      | NULL          |
++-----------+---------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT FIRST_NAME,LPAD(FIRST_NAME,10,'*')AS PADDED_NAME FROM EMPLOYEES;
++--------------+-------------+
+| FIRST_NAME   | PADDED_NAME |
++--------------+-------------+
+| Rahul        | *****Rahul  |
+| Anita        | *****Anita  |
+| Suresh       | ****Suresh  |
+| Priya        | *****Priya  |
+| Rahul        | *****Rahul  |
+| Kiran        | *****Kiran  |
+| Deepika      | ***Deepika  |
+| Mahesh       | ****Mahesh  |
+| Divya        | *****Divya  |
+| Arjun        | *****Arjun  |
+|  ARUN KUMAR  |  ARUN KUMA  |
++--------------+-------------+
+11 rows in set (0.02 sec)
+
+mysql> SELECT FIRST_NAME,RPAD(FIRST_NAME,10,'*')AS PADDED_NAME FROM EMPLOYEES;
++--------------+-------------+
+| FIRST_NAME   | PADDED_NAME |
++--------------+-------------+
+| Rahul        | Rahul*****  |
+| Anita        | Anita*****  |
+| Suresh       | Suresh****  |
+| Priya        | Priya*****  |
+| Rahul        | Rahul*****  |
+| Kiran        | Kiran*****  |
+| Deepika      | Deepika***  |
+| Mahesh       | Mahesh****  |
+| Divya        | Divya*****  |
+| Arjun        | Arjun*****  |
+|  ARUN KUMAR  |  ARUN KUMA  |
++--------------+-------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT FIRST_NAME,ASCII(FIRST_NAME)AS ASCII_VALUE FROM EMPLOYEES;
++--------------+-------------+
+| FIRST_NAME   | ASCII_VALUE |
++--------------+-------------+
+| Rahul        |          82 |
+| Anita        |          65 |
+| Suresh       |          83 |
+| Priya        |          80 |
+| Rahul        |          82 |
+| Kiran        |          75 |
+| Deepika      |          68 |
+| Mahesh       |          77 |
+| Divya        |          68 |
+| Arjun        |          65 |
+|  ARUN KUMAR  |          32 |
++--------------+-------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT*FROM EMPLOYEES WHERE FIRST_NAME LIKE '%R';
+Empty set (0.02 sec)
+
+mysql> SELECT*FROM EMPLOYEES WHERE EMAIL LIKE '%YAHOO%';
++--------+------------+-----------+-------------------------+--------------+------------+-----------+----------+
+| emp_id | first_name | last_name | email                   | phone_number | department | city      | salary   |
++--------+------------+-----------+-------------------------+--------------+------------+-----------+----------+
+|    102 | Anita      | Sharma    | anita.sharma@yahoo.com  | 912-345-6789 | HR         | Bangalore | 38000.00 |
+|    107 | Deepika    | Naidu     | deepika.naidu@yahoo.com | 944-111-2222 | HR         | Vizag     | 39000.00 |
++--------+------------+-----------+-------------------------+--------------+------------+-----------+----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT CONCAT(FIRST_NAME,' ', LAST_NAME, ' - ', DEPARTMENT) AS EMPLOYEES_DEATILS FROM EMPLOYEES;
++-----------------------+
+| EMPLOYEES_DEATILS     |
++-----------------------+
+| Rahul Kumar - IT      |
+| Anita Sharma - HR     |
+| Suresh Verma - Sales  |
+| Priya Singh - Finance |
+| Rahul Joshi - Testing |
+| Kiran Reddy - IT      |
+| Deepika Naidu - HR    |
+| Mahesh Patel - Sales  |
+| Divya Gupta - Finance |
+| Arjun Rao - Developer |
+| NULL                  |
++-----------------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT EMAIL, LENGTH(EMAIL) AS EMAIL_LENGHT FROM EMPLOYEES;
++-------------------------+--------------+
+| EMAIL                   | EMAIL_LENGHT |
++-------------------------+--------------+
+| rahul.kumar@gmail.com   |           21 |
+| anita.sharma@yahoo.com  |           22 |
+| suresh.verma@gmail.com  |           22 |
+| priya.singh@outlook.com |           23 |
+| rahul.joshi@gmail.com   |           21 |
+| kiran.reddy@gmail.com   |           21 |
+| deepika.naidu@yahoo.com |           23 |
+| mahesh.patel@gmail.com  |           22 |
+| divya.gupta@gmail.com   |           21 |
+| arjun.rao@gmail.com     |           19 |
+| NULL                    |         NULL |
++-------------------------+--------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES WHERE LENGTH(FIRST_NAME) > 5;
++--------+--------------+-----------+-------------------------+--------------+------------+---------+----------+
+| emp_id | first_name   | last_name | email                   | phone_number | department | city    | salary   |
++--------+--------------+-----------+-------------------------+--------------+------------+---------+----------+
+|    103 | Suresh       | Verma     | suresh.verma@gmail.com  | 998-123-4567 | Sales      | Chennai | 52000.00 |
+|    107 | Deepika      | Naidu     | deepika.naidu@yahoo.com | 944-111-2222 | HR         | Vizag   | 39000.00 |
+|    108 | Mahesh       | Patel     | mahesh.patel@gmail.com  | 933-444-5555 | Sales      | Mumbai  | 62000.00 |
+|    111 |  ARUN KUMAR  | NULL      | NULL                    | NULL         | NULL       | NULL    |     NULL |
++--------+--------------+-----------+-------------------------+--------------+------------+---------+----------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT REPLACE(EMAIL, '.GMAIL.COM', '.COMPANY.COM') AS NEW_EMAIL FROM EMPLOYEES;
++-------------------------+
+| NEW_EMAIL               |
++-------------------------+
+| rahul.kumar@gmail.com   |
+| anita.sharma@yahoo.com  |
+| suresh.verma@gmail.com  |
+| priya.singh@outlook.com |
+| rahul.joshi@gmail.com   |
+| kiran.reddy@gmail.com   |
+| deepika.naidu@yahoo.com |
+| mahesh.patel@gmail.com  |
+| divya.gupta@gmail.com   |
+| arjun.rao@gmail.com     |
+| NULL                    |
++-------------------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT EMAIL, INSTR(EMAIL, '@') AS AT_POSITION FROM EMPLOYEES;
++-------------------------+-------------+
+| EMAIL                   | AT_POSITION |
++-------------------------+-------------+
+| rahul.kumar@gmail.com   |          12 |
+| anita.sharma@yahoo.com  |          13 |
+| suresh.verma@gmail.com  |          13 |
+| priya.singh@outlook.com |          12 |
+| rahul.joshi@gmail.com   |          12 |
+| kiran.reddy@gmail.com   |          12 |
+| deepika.naidu@yahoo.com |          14 |
+| mahesh.patel@gmail.com  |          13 |
+| divya.gupta@gmail.com   |          12 |
+| arjun.rao@gmail.com     |          10 |
+| NULL                    |        NULL |
++-------------------------+-------------+
+11 rows in set (0.02 sec)
+
+mysql> SELECT EMAIL, SUBSTRING_INDEX(EMAIL, '@', 1) AS USERNAME FROM EMPLOYEES;
++-------------------------+---------------+
+| EMAIL                   | USERNAME      |
++-------------------------+---------------+
+| rahul.kumar@gmail.com   | rahul.kumar   |
+| anita.sharma@yahoo.com  | anita.sharma  |
+| suresh.verma@gmail.com  | suresh.verma  |
+| priya.singh@outlook.com | priya.singh   |
+| rahul.joshi@gmail.com   | rahul.joshi   |
+| kiran.reddy@gmail.com   | kiran.reddy   |
+| deepika.naidu@yahoo.com | deepika.naidu |
+| mahesh.patel@gmail.com  | mahesh.patel  |
+| divya.gupta@gmail.com   | divya.gupta   |
+| arjun.rao@gmail.com     | arjun.rao     |
+| NULL                    | NULL          |
++-------------------------+---------------+
+11 rows in set (0.02 sec)
+
+mysql> SELECT EMAIL, SUBSTRING_INDEX(EMAIL, '@', -1) AS DOMAIN FROM EMPLOYEES;
++-------------------------+-------------+
+| EMAIL                   | DOMAIN      |
++-------------------------+-------------+
+| rahul.kumar@gmail.com   | gmail.com   |
+| anita.sharma@yahoo.com  | yahoo.com   |
+| suresh.verma@gmail.com  | gmail.com   |
+| priya.singh@outlook.com | outlook.com |
+| rahul.joshi@gmail.com   | gmail.com   |
+| kiran.reddy@gmail.com   | gmail.com   |
+| deepika.naidu@yahoo.com | yahoo.com   |
+| mahesh.patel@gmail.com  | gmail.com   |
+| divya.gupta@gmail.com   | gmail.com   |
+| arjun.rao@gmail.com     | gmail.com   |
+| NULL                    | NULL        |
++-------------------------+-------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES WHERE LAST_NAME LIKE '%A';
++--------+------------+-----------+------------------------+--------------+------------+-----------+----------+
+| emp_id | first_name | last_name | email                  | phone_number | department | city      | salary   |
++--------+------------+-----------+------------------------+--------------+------------+-----------+----------+
+|    102 | Anita      | Sharma    | anita.sharma@yahoo.com | 912-345-6789 | HR         | Bangalore | 38000.00 |
+|    103 | Suresh     | Verma     | suresh.verma@gmail.com | 998-123-4567 | Sales      | Chennai   | 52000.00 |
+|    109 | Divya      | Gupta     | divya.gupta@gmail.com  | 955-777-8888 | Finance    | Delhi     | 49000.00 |
++--------+------------+-----------+------------------------+--------------+------------+-----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT UPPER(CONCAT(FIRST_NAME,' ',LAST_NAME)) AS FULL_NAME FROM EMPLOYEES WHERE DEPARTMENT = 'IT';
++-------------+
+| FULL_NAME   |
++-------------+
+| RAHUL KUMAR |
+| KIRAN REDDY |
++-------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT FIRST_NAME, COUNT(*) AS NAME_COUNT FROM EMPLOYEES GROUP BY FIRST_NAME HAVING COUNT(*) > 1;
++------------+------------+
+| FIRST_NAME | NAME_COUNT |
++------------+------------+
+| Rahul      |          2 |
++------------+------------+
+1 row in set (0.02 sec)
+
+mysql> SELECT*FROM EMPLOYEES;
++--------+--------------+-----------+-------------------------+--------------+------------+-----------+----------+
+| emp_id | first_name   | last_name | email                   | phone_number | department | city      | salary   |
++--------+--------------+-----------+-------------------------+--------------+------------+-----------+----------+
+|    101 | Rahul        | Kumar     | rahul.kumar@gmail.com   | 987-654-3210 | IT         | Hyderabad | 45000.00 |
+|    102 | Anita        | Sharma    | anita.sharma@yahoo.com  | 912-345-6789 | HR         | Bangalore | 38000.00 |
+|    103 | Suresh       | Verma     | suresh.verma@gmail.com  | 998-123-4567 | Sales      | Chennai   | 52000.00 |
+|    104 | Priya        | Singh     | priya.singh@outlook.com | 900-456-7890 | Finance    | Pune      | 47000.00 |
+|    105 | Rahul        | Joshi     | rahul.joshi@gmail.com   | 955-888-1111 | Testing    | Delhi     | 41000.00 |
+|    106 | Kiran        | Reddy     | kiran.reddy@gmail.com   | 901-222-3333 | IT         | Hyderabad | 56000.00 |
+|    107 | Deepika      | Naidu     | deepika.naidu@yahoo.com | 944-111-2222 | HR         | Vizag     | 39000.00 |
+|    108 | Mahesh       | Patel     | mahesh.patel@gmail.com  | 933-444-5555 | Sales      | Mumbai    | 62000.00 |
+|    109 | Divya        | Gupta     | divya.gupta@gmail.com   | 955-777-8888 | Finance    | Delhi     | 49000.00 |
+|    110 | Arjun        | Rao       | arjun.rao@gmail.com     | 988-999-7777 | Developer  | Hyderabad | 68000.00 |
+|    111 |  ARUN KUMAR  | NULL      | NULL                    | NULL         | NULL       | NULL      |     NULL |
++--------+--------------+-----------+-------------------------+--------------+------------+-----------+----------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT PHONE_NUMBER,REPLACE(PHONE_NUMBER,'-','')AS CLEAN_PHONE FROM EMPLOYEES;
++--------------+-------------+
+| PHONE_NUMBER | CLEAN_PHONE |
++--------------+-------------+
+| 987-654-3210 | 9876543210  |
+| 912-345-6789 | 9123456789  |
+| 998-123-4567 | 9981234567  |
+| 900-456-7890 | 9004567890  |
+| 955-888-1111 | 9558881111  |
+| 901-222-3333 | 9012223333  |
+| 944-111-2222 | 9441112222  |
+| 933-444-5555 | 9334445555  |
+| 955-777-8888 | 9557778888  |
+| 988-999-7777 | 9889997777  |
+| NULL         | NULL        |
++--------------+-------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES WHERE FIRST_NAME LIKE '%I%';
++--------+------------+-----------+-------------------------+--------------+------------+-----------+----------+
+| emp_id | first_name | last_name | email                   | phone_number | department | city      | salary   |
++--------+------------+-----------+-------------------------+--------------+------------+-----------+----------+
+|    102 | Anita      | Sharma    | anita.sharma@yahoo.com  | 912-345-6789 | HR         | Bangalore | 38000.00 |
+|    104 | Priya      | Singh     | priya.singh@outlook.com | 900-456-7890 | Finance    | Pune      | 47000.00 |
+|    106 | Kiran      | Reddy     | kiran.reddy@gmail.com   | 901-222-3333 | IT         | Hyderabad | 56000.00 |
+|    107 | Deepika    | Naidu     | deepika.naidu@yahoo.com | 944-111-2222 | HR         | Vizag     | 39000.00 |
+|    109 | Divya      | Gupta     | divya.gupta@gmail.com   | 955-777-8888 | Finance    | Delhi     | 49000.00 |
++--------+------------+-----------+-------------------------+--------------+------------+-----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT FIRST_NAME, LAST_NAME, LENGTH(FIRST_NAME) AS NAME_LENGTH FROM EMPLOYEES ORDER BY LENGTH(FIRST_NAME);
++--------------+-----------+-------------+
+| FIRST_NAME   | LAST_NAME | NAME_LENGTH |
++--------------+-----------+-------------+
+| Rahul        | Kumar     |           5 |
+| Anita        | Sharma    |           5 |
+| Priya        | Singh     |           5 |
+| Rahul        | Joshi     |           5 |
+| Kiran        | Reddy     |           5 |
+| Divya        | Gupta     |           5 |
+| Arjun        | Rao       |           5 |
+| Suresh       | Verma     |           6 |
+| Mahesh       | Patel     |           6 |
+| Deepika      | Naidu     |           7 |
+|  ARUN KUMAR  | NULL      |          12 |
++--------------+-----------+-------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT FIRST_NAME, LAST_NAME,LENGTH(FIRST_NAME) AS NAME_LENGTH FROM EMPLOYEES ORDER BY LENGTH(FIRST_NAME) DESC;
++--------------+-----------+-------------+
+| FIRST_NAME   | LAST_NAME | NAME_LENGTH |
++--------------+-----------+-------------+
+|  ARUN KUMAR  | NULL      |          12 |
+| Deepika      | Naidu     |           7 |
+| Suresh       | Verma     |           6 |
+| Mahesh       | Patel     |           6 |
+| Rahul        | Kumar     |           5 |
+| Anita        | Sharma    |           5 |
+| Priya        | Singh     |           5 |
+| Rahul        | Joshi     |           5 |
+| Kiran        | Reddy     |           5 |
+| Divya        | Gupta     |           5 |
+| Arjun        | Rao       |           5 |
++--------------+-----------+-------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT*FROM EMPLOYEES WHERE LENGTH(CITY) > 6;
++--------+------------+-----------+------------------------+--------------+------------+-----------+----------+
+| emp_id | first_name | last_name | email                  | phone_number | department | city      | salary   |
++--------+------------+-----------+------------------------+--------------+------------+-----------+----------+
+|    101 | Rahul      | Kumar     | rahul.kumar@gmail.com  | 987-654-3210 | IT         | Hyderabad | 45000.00 |
+|    102 | Anita      | Sharma    | anita.sharma@yahoo.com | 912-345-6789 | HR         | Bangalore | 38000.00 |
+|    103 | Suresh     | Verma     | suresh.verma@gmail.com | 998-123-4567 | Sales      | Chennai   | 52000.00 |
+|    106 | Kiran      | Reddy     | kiran.reddy@gmail.com  | 901-222-3333 | IT         | Hyderabad | 56000.00 |
+|    110 | Arjun      | Rao       | arjun.rao@gmail.com    | 988-999-7777 | Developer  | Hyderabad | 68000.00 |
++--------+------------+-----------+------------------------+--------------+------------+-----------+----------+
+5 rows in set (0.00 sec)
+
+mysql>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
