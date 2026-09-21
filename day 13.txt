@@ -1,0 +1,397 @@
+SET Operators
+=============
+
+UNION
+-----------
+combine results from two queries and remove duplicates rows. columns must have the same number and type.
+
+UNION ALL
+-------------
+combines result from two queries and include all rows. including duplicates. columns must have the same number and types.
+
+INTERSECT
+------------
+returns rows that are common to both queries. columns must have the same number and type.
+note :- MySQL doesn't support intersect directly.
+
+MINUS/EXCEPT
+-------------
+returns rows from the first query that are not present in the second query. columns must have the same number and type.
+
+JOINS*
+=======
+
+A joins in MySQL is used to combine rows from two or more tables based on related columns.
+
+example:-
+--------
+
+employees table --> employee details.
+department table --> department deatils.
+
+if your want to see which employee belongings to which department. you need to join there two tables.
+
+why do we need joins?
+--------------------
+1. to fetch data from multiple tables in a single query
+2. to reduce data duplicates(insted of keeping everything in one table).
+3. to implement realtionships like(one-to-one,one-to-many,many-to-one,many-to-many).
+4. to generate reports and analytics combing different datasets. 
+
+types of joins:
+=============
+
+1.inner join:
+retruns only the row that have matching values in both tables.
+syntax:
+select columns
+from table1
+inner join table2
+on table1.common_column2.common_column;
+
+2.right join:
+returns all rows from the right table and the matched row from the left table if no match null values appear for the left table columns.
+syntax:
+select coulumns
+from table1
+right join table2
+ontable1.common_column=table2.common_column;
+
+3.left join:
+returns all rows from the left table and the matched row from the right table if no match null values appear for the right table columns.
+syntax:
+select coulumns
+from table1
+left join table2
+ontable1.common_column=table2.common_column;
+
+4.full join:
+to simulte the use the union of left join and right join.
+syntax:
+select coulumns
+from table1
+left join table2
+ontable1.common_column=table2.common_column;
+union
+select coulumns
+from table1
+right join table2
+ontable1.common_column=table2.common_column;
+
+5.cross join:
+returns cartesian product-->every row from the first table with every row from the second table.
+syntax:
+select columns
+from table1
+cross join table2;
+
+6.self join:
+a table joined with itself.
+syntax:
+select a.columns,b.columns
+from table1 a
+inner join table1 b
+on a.commn=b.common_column;
+
+mysql> CREATE TABLE Students (
+    ->     student_id INT PRIMARY KEY,
+    ->     student_name VARCHAR(50),
+    ->     course VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql>
+mysql> INSERT INTO Students VALUES
+    -> (101,'Rahul','Java Full Stack'),
+    -> (102,'Priya','Python Full Stack'),
+    -> (103,'Kiran','Data Science'),
+    -> (104,'Sneha','Java Full Stack'),
+    -> (105,'Ajay','Testing');
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql>
+mysql> CREATE TABLE Placed_Students (
+    ->     student_id INT PRIMARY KEY,
+    ->     student_name VARCHAR(50),
+    ->     company_name VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> INSERT INTO Placed_Students VALUES
+    -> (103,'Kiran','TCS'),
+    -> (104,'Sneha','Infosys'),
+    -> (105,'Ajay','Wipro'),
+    -> (106,'Pooja','Accenture'),
+    -> (107,'Ramesh','Capgemini');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select * from Placed_Students;
++------------+--------------+--------------+
+| student_id | student_name | company_name |
++------------+--------------+--------------+
+|        103 | Kiran        | TCS          |
+|        104 | Sneha        | Infosys      |
+|        105 | Ajay         | Wipro        |
+|        106 | Pooja        | Accenture    |
+|        107 | Ramesh       | Capgemini    |
++------------+--------------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from Students;
++------------+--------------+-------------------+
+| student_id | student_name | course            |
++------------+--------------+-------------------+
+|        101 | Rahul        | Java Full Stack   |
+|        102 | Priya        | Python Full Stack |
+|        103 | Kiran        | Data Science      |
+|        104 | Sneha        | Java Full Stack   |
+|        105 | Ajay         | Testing           |
++------------+--------------+-------------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT STUDENT_NAME FORM STUDENTS
+    -> UNION
+    -> SELECT STUDENT_NAME FORM PLACED_STUDENTS
+    -> ;
+SELECT STUDENT_NAME FORM PLACED_STUDENTS' at line 1
+mysql> SELECT STUDENT_NAME FORM STUDENTS
+    -> UNION
+    -> SELECT STUDENT_NAME FORM PLACED_STUDENTS
+    -> ;
+SELECT STUDENT_NAME FORM PLACED_STUDENTS' at line 1
+mysql> SELECT STUDENT_NAME FROM STUDENTS
+    -> UNION
+    -> SELECT STUDENT_NAME FROM PLACED_STUDENTS;
++--------------+
+| STUDENT_NAME |
++--------------+
+| Rahul        |
+| Priya        |
+| Kiran        |
+| Sneha        |
+| Ajay         |
+| Pooja        |
+| Ramesh       |
++--------------+
+7 rows in set (0.01 sec)
+
+mysql> SELECT STUDENT_NAME FROM STUDENTS
+    -> UNION ALL
+    -> ;
+mysql> SELECT STUDENT_NAME FROM STUDENTS
+    -> UNION ALL
+    -> SELECT STUDENT_NAME FROM PLACED_STUDENTS;
++--------------+
+| STUDENT_NAME |
++--------------+
+| Rahul        |
+| Priya        |
+| Kiran        |
+| Sneha        |
+| Ajay         |
+| Kiran        |
+| Sneha        |
+| Ajay         |
+| Pooja        |
+| Ramesh       |
++--------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT STUDENT_NAME FROM STUDENTS
+    -> INTERSECT
+    -> SELECT STUDENT_NAME FROM PLACED_STUDENTS;
++--------------+
+| STUDENT_NAME |
++--------------+
+| Kiran        |
+| Sneha        |
+| Ajay         |
++--------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT STUDENT_NAME FROM STUDENTS
+    -> MINUS
+    -> SELECT STUDENT_NAME FROM PLACED_STUDENTS;
+mysql> SELECT STUDENT_NAME FROM STUDENTS
+    -> MINUS
+    -> SELECT STUDENT_NAME FROM PLACED_STUDENTS;
+mysql> SELECT STUDENT_NAME FROM STUDENTS
+    -> EXCEPT
+    -> SELECT STUDENT_NAME FROM PLACED_STUDENTS;
++--------------+
+| STUDENT_NAME |
++--------------+
+| Rahul        |
+| Priya        |
++--------------+
+2 rows in set (0.00 sec)
+
+mysql> create table tab1(numid int);
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> create table tab2(numid int);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> insert into tab1 values(10),(11),(12),(14);
+Query OK, 4 rows affected (0.03 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> insert into tab2 values(11),(12),(13),(15);
+Query OK, 4 rows affected (0.03 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select*from tab1;
++-------+
+| numid |
++-------+
+|    10 |
+|    11 |
+|    12 |
+|    14 |
++-------+
+4 rows in set (0.00 sec)
+
+mysql> select*from tab2;
++-------+
+| numid |
++-------+
+|    11 |
+|    12 |
+|    13 |
+|    15 |
++-------+
+4 rows in set (0.00 sec)
+
+mysql> -- inner join
+mysql> select*from tab1
+    -> inner join tab2
+    -> on tab1.numid = tab2.numid;
++-------+-------+
+| numid | numid |
++-------+-------+
+|    11 |    11 |
+|    12 |    12 |
++-------+-------+
+2 rows in set (0.02 sec)
+
+mysql> select*from tab1
+    -> left join tab2
+    -> on tab1.numid=tab2.numid;
++-------+-------+
+| numid | numid |
++-------+-------+
+|    10 |  NULL |
+|    11 |    11 |
+|    12 |    12 |
+|    14 |  NULL |
++-------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select*from tab1
+    -> right join tab2
+    -> on tab1.numid=tab2.numid;
++-------+-------+
+| numid | numid |
++-------+-------+
+|    11 |    11 |
+|    12 |    12 |
+|  NULL |    13 |
+|  NULL |    15 |
++-------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select*from tab1
+    -> full join tab2
+    -> on tab1.numid=tab2.numid;
+ERROR 1054 (42S22): Unknown column 'tab1.numid' in 'on clause'
+mysql> select*from tab1
+    -> left join tab2
+    -> on tab1.numid=tab2.numid;
++-------+-------+
+| numid | numid |
++-------+-------+
+|    10 |  NULL |
+|    11 |    11 |
+|    12 |    12 |
+|    14 |  NULL |
++-------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select*from tab1
+    -> left join tab2
+    -> on tab1.numid=tab2.numid
+    -> union
+    -> select*from tab1
+    -> right join tab2
+    -> on tab1.numid=tab2.numid;
++-------+-------+
+| numid | numid |
++-------+-------+
+|    10 |  NULL |
+|    11 |    11 |
+|    12 |    12 |
+|    14 |  NULL |
+|  NULL |    13 |
+|  NULL |    15 |
++-------+-------+
+6 rows in set (0.00 sec)
+
+mysql> select*from tab1 cross join tab2;
++-------+-------+
+| numid | numid |
++-------+-------+
+|    14 |    11 |
+|    12 |    11 |
+|    11 |    11 |
+|    10 |    11 |
+|    14 |    12 |
+|    12 |    12 |
+|    11 |    12 |
+|    10 |    12 |
+|    14 |    13 |
+|    12 |    13 |
+|    11 |    13 |
+|    10 |    13 |
+|    14 |    15 |
+|    12 |    15 |
+|    11 |    15 |
+|    10 |    15 |
++-------+-------+
+16 rows in set (0.00 sec)
+
+mysql>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
